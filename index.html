@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Convite para a Rayne ❤️</title>
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Playfair+Display:wght@600;800&display=swap" rel="stylesheet">
+<style>
+  :root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
+  body{font-family:'Nunito',system-ui,sans-serif;background:linear-gradient(160deg,#3d0a1a 0%,#6e1230 55%,#8e1b3e 100%);min-height:100vh;background-attachment:fixed}
+  h1,h2{font-family:'Playfair Display',Georgia,serif}
+  .card{position:relative;z-index:10;background:#fff;color:#4a0d1f;border-radius:1.5rem;box-shadow:0 25px 50px -12px #0007;padding:1.5rem}
+  .card>*+*{margin-top:1.1rem}
+  .card h1{font-size:1.75rem;font-weight:800;color:#9f1239;line-height:1.2}
+  .card h2{font-size:1.1rem;font-weight:700;color:#9f1239}
+  .ctr{text-align:center}
+  .row{display:flex;gap:.75rem}.row>*{flex:1}
+  .note{font-size:.75rem;background:#fdf2f8;border:1px solid #fbcfe8;border-radius:.75rem;padding:.5rem .75rem}
+  .err{color:#be123c;font-weight:600;font-size:.875rem}
+  .heart{position:fixed;pointer-events:none;z-index:0}
+  .heart{bottom:-40px;opacity:.25;animation:float linear infinite}
+  @keyframes float{to{transform:translateY(-115vh) rotate(25deg)}}
+  .opt{width:100%;text-align:left;border:2px solid #fbcfe8;border-radius:1rem;padding:.75rem 1rem;background:#fff;color:#4a0d1f;font-weight:600;transition:.15s;display:block}
+  .opt.sel,.opt:has(input:checked){background:#fdf2f8;border-color:#be185d;box-shadow:0 0 0 3px #fbcfe888}
+  .opt.off{opacity:.4;cursor:not-allowed;text-decoration:line-through}
+  .opt input[type=radio]{appearance:none;-webkit-appearance:none;flex:none;width:1.15rem;height:1.15rem;border-radius:9999px;background:#fff;border:2px solid #f9a8d4;margin:0;cursor:pointer;transition:.15s}
+  .opt input[type=radio]:checked{border-color:#be185d;box-shadow:inset 0 0 0 3px #fff;background:#be185d}
+  .day{border:2px solid #fbcfe8;border-radius:.75rem;padding:.55rem 0;background:#fff;color:#4a0d1f;font-weight:700;transition:.15s}
+  .day.sel{background:#be185d;color:#fff;border-color:#be185d}
+  .day.off-date{opacity:.3;cursor:not-allowed;background:#f8fafc;border-color:#e2e8f0;text-decoration:line-through}
+  .btn{border-radius:9999px;padding:.8rem 1.4rem;font-weight:700;transition:.15s}
+  .btn:active{transform:scale(.97)}
+  .btn:disabled{opacity:.4;cursor:not-allowed}
+  .pri{background:#be185d;color:#fff}
+  .sec{background:#fce7f3;color:#831843}
+  .fld{width:100%;border:2px solid #fbcfe8;border-radius:1rem;padding:.7rem 1rem;background:#fff;color:#4a0d1f}
+  .fld:focus,.opt:focus-visible,.btn:focus-visible,.day:focus-visible{outline:3px solid #f472b6;outline-offset:2px}
+  #toast{transition:.3s;transform:translate(-50%,-30px);opacity:0}
+  #toast.show{transform:translate(-50%,0);opacity:1}
+  #peek{animation:peek 4s ease-in-out infinite}
+  @keyframes peek{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-6px) rotate(4deg)}}
+  .conf{position:absolute;left:50%;top:60%;pointer-events:none;font-size:18px;line-height:1}
+  @media (prefers-reduced-motion:reduce){.heart,#peek{animation:none}}
+</style>
+</head>
+<body class="text-rose-50">
+<div id="hearts" aria-hidden="true"></div>
+<div id="toast" class="fixed top-4 left-1/2 z-50 bg-white text-rose-800 font-bold rounded-full shadow-2xl px-5 py-3 text-sm max-w-[90vw] text-center pointer-events-none"></div>
+
+<div id="celebrate" class="hidden fixed inset-0 z-50 bg-black/70 flex items-center justify-center" onclick="this.classList.add('hidden')">
+  <div class="text-center px-4">
+    <div class="leading-none" style="font-size:8.5rem;filter:drop-shadow(0 8px 24px rgba(0,0,0,.5))">🏖️</div>
+    <div class="text-white text-4xl font-extrabold mt-2 tracking-wide">VAMOS PRA PRAIA!</div>
+    <div class="text-pink-200 mt-3 text-sm">13/13 ⭐️ toque para fechar</div>
+  </div>
+</div>
+
+<main id="main" class="relative z-10 max-w-md mx-auto px-4 pt-20 pb-44">
+
+<div id="rayane">
+<div id="peek" aria-hidden="true" class="absolute right-8 select-none" style="top:-4.4rem;z-index:0;width:6.5rem;height:5.5rem">
+<svg viewBox="0 0 100 85" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+<ellipse cx="22" cy="52" rx="9" ry="14" fill="#fff"/><ellipse cx="78" cy="52" rx="9" ry="14" fill="#fff"/>
+<circle cx="50" cy="48" r="26" fill="#f0c7a2"/>
+<path d="M24 52c0 22 12 33 26 33s26-11 26-33c-6 8-14 10-26 10S30 60 24 52z" fill="#fff"/>
+<path d="M40 64q10 5 20 0q-10-6-20 0z" fill="#f0c7a2"/>
+<path d="M33 52q17-12 34 0" fill="#fff" stroke="#fff" stroke-width="3"/>
+<circle cx="40" cy="47" r="5" fill="#fff" stroke="#999" stroke-width=".8"/><circle cx="60" cy="47" r="5" fill="#fff" stroke="#999" stroke-width=".8"/>
+<circle cx="38.5" cy="48.5" r="2.4" fill="#222"/><circle cx="58.5" cy="48.5" r="2.4" fill="#222"/>
+<path d="M33 40q7-5 14-1M53 39q7-4 14 1" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+<ellipse cx="50" cy="32" rx="44" ry="8" fill="#ecdcab"/>
+<path d="M28 32c0-20 8-28 22-28s22 8 22 28z" fill="#f4e8bd"/>
+<path d="M28 30h44v5H28z" fill="#2a2a2a"/>
+</svg></div>
+
+<section id="p1" class="card">
+  <h1>Oi Rayne! Você aceita um date com o Elder? 💘</h1>
+  <div class="space-y-3">
+    <h2>🙋‍♂️ Sobre mim</h2>
+    <p class="text-sm leading-relaxed">Tenho ataxia (SCA1). Ela afeta um pouco a mobilidade física e posso precisar do seu ombro de vez em quando, mas garanto que ao vivo sou bem melhor do que qualquer pesquisa na internet!</p>
+    <button class="opt" data-ata="ok">Por mim tudo bem ❤️</button>
+    <button class="opt" data-ata="res">Tenho ressalvas 😅</button>
+    
+  </div>
+  <div id="blk-when" class="space-y-3">
+    <h2>📅 Quando?</h2>
+    <input id="date" type="hidden">
+    <div class="border-2 border-pink-200 rounded-2xl p-3 bg-white" role="group" aria-label="Data do encontro">
+      <p class="text-center font-bold text-rose-800 mb-2">Novembro 2026</p>
+      <div class="grid grid-cols-7 gap-1 text-center text-[11px] font-bold text-rose-700 mb-1"><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span><span>Dom</span></div>
+      <div id="cal" class="grid grid-cols-7 gap-1"></div>
+    </div>
+    <select id="time" class="fld" aria-label="Horário">
+      <option value="">Escolha o horário</option>
+      <option>19:30</option><option>20:00</option><option>20:30</option>
+    </select>
+  </div>
+  <div id="blk-where" class="space-y-3">
+    <h2>🍴 Onde?</h2>
+    <p class="note">📌 Restaurante já selecionado, eu faço a reserva!</p>
+    <div class="opt" role="button" tabindex="0" data-rest="Unami Sushi">🍣 Unami Sushi <a class="ml-1 text-pink-700 underline text-sm" href="https://instagram.com/sushiumamibar" target="_blank" rel="noopener noreferrer">@sushiumamibar 🔗</a></div>
+  </div>
+  <p id="err1" class="err hidden"></p>
+  <div class="row">
+    <button id="yes" class="btn pri">Sim 💖</button>
+    <button id="no" class="btn sec">Não 😅</button>
+  </div>
+</section>
+
+<section id="no-s" class="card ctr hidden">
+  <p class="text-2xl font-bold text-rose-800" style="font-family:'Playfair Display',serif">Respeito sua opinião, mas é uma opinião burra! 😅</p>
+  <div class="row">
+    <button class="btn sec" data-go="p1" data-back>⬅️ Mudar de ideia</button>
+    <button id="conclude-no" class="btn pri">Concluir ✅</button>
+  </div>
+</section>
+
+<section id="refuse" class="card ctr hidden">
+  <div class="text-6xl">👋</div>
+  <h1>Até mais!</h1>
+  <p>Resposta enviada com sucesso. ✨</p>
+  <button class="btn sec" data-reset>⬅️ Recomeçar</button>
+</section>
+
+<section id="addr" class="card hidden">
+  <h1>📍 Seu endereço</h1>
+  <p class="text-sm leading-relaxed">Vou te buscar de Uber no horário escolhido, e na volta te deixo aí também! 🚗✨</p>
+  <div class="space-y-2">
+    <label for="address" class="block text-sm font-bold text-rose-900">Endereço</label>
+    <input id="address" type="text" class="fld" placeholder="Rua, número, bairro...">
+  </div>
+  <p class="note">🔒 Usado apenas para combinar a busca no horário marcado e a volta pra casa.</p>
+  <p id="err-addr" class="err hidden">Informe seu endereço para continuar.</p>
+  <div class="row">
+    <button class="btn sec" data-go="p1" data-back>⬅️ Voltar</button>
+    <button id="to-kiss" class="btn pri">Próximo ➡️</button>
+  </div>
+</section>
+
+<section id="pic" class="card hidden">
+  <h1>💋 Termos dos beijos</h1>
+  <p class="text-sm leading-relaxed">A taxa de serviço deste date inclui beijos. Escolha os termos do contrato:</p>
+  <div class="space-y-3">
+    <label class="opt">
+      <div class="flex items-center gap-2"><input type="radio" name="kiss" value="Sem beijo: vamos deixar pra depois"><b>Sem beijo 🙊</b></div>
+      <span class="block pl-6 text-xs font-normal text-rose-800 mt-1">Vamos deixar pra depois, sem pressa.</span>
+    </label>
+    <label class="opt">
+      <div class="flex items-center gap-2"><input type="radio" name="kiss" value="Vamos ver se rola beijos"><b>Vamos ver se rola beijos 😏</b></div>
+      <span class="block pl-6 text-xs font-normal text-rose-800 mt-1">Deixa o clima decidir.</span>
+    </label>
+    <label class="opt">
+      <div class="flex items-center gap-2"><input type="radio" name="kiss" value="13 beijos"><b>13 beijos 💋🔥</b></div>
+      <span class="block pl-6 text-xs font-normal text-rose-800 mt-1">Número da sorte: contrato fechado!</span>
+    </label>
+  </div>
+  <p id="err3" class="err hidden">Escolha uma opção para continuar.</p>
+  <div class="row">
+    <button class="btn sec" data-go="addr" data-back>⬅️ Voltar</button>
+    <button id="to-sum" class="btn pri">Próximo ➡️</button>
+  </div>
+</section>
+
+<section id="p3" class="card hidden">
+  <h1>Resumo do Nosso Date: 📝✨</h1>
+  <div class="bg-pink-50 rounded-2xl p-4 text-sm space-y-1">
+    <p>📅 <b id="s-dt"></b></p>
+    <p>🍴 <b id="s-rest"></b></p>
+    <p>📍 Endereço: <b id="s-addr"></b></p>
+    <p>🚗 <b id="s-uber"></b></p>
+    <p>💋 <b id="s-mot"></b></p>
+  </div>
+  <p id="aviso" class="note text-sm font-medium text-rose-900 hidden">🔥 <b>Aviso importante:</b> A ataxia afeta só um pouco o equilíbrio ao andar.. mas o meu beijo continua 100% intacto e garantido! 😉</p>
+  <div class="space-y-2 text-sm">
+    <p>📚 <b>Literatura e Leituras:</b> Últimos livros e indicações.</p>
+    <p>🍣 <b>Gastronomia:</b> Avaliação dos restaurantes de Fortaleza.</p>
+    <p>🎬 <b>Filmes e Séries:</b> O que você tem assistido e recomenda.</p>
+    <p>✈️ <b>Viagens:</b> Lugares que já visitou e os que quer conhecer.</p>
+    <p>💼 <b>Trabalho e Sonhos:</b> O que você faz e para onde quer ir.</p>
+    <p>☕ <b>Boas Conversas:</b> Planos, hobbies e boas risadas sem pressa.</p>
+  </div>
+  <div id="seal" class="rounded-2xl text-white p-4 text-center text-sm font-semibold"></div>
+  <button id="conclude-yes" class="btn pri w-full">Concluir ✅</button>
+  <div class="row">
+    <button class="btn sec" data-go="pic" data-back>⬅️ Mudar ideia</button>
+    <button class="btn sec" data-reset>🔄 Refazer tudo</button>
+  </div>
+</section>
+
+<section id="done" class="card ctr hidden">
+  <div class="text-6xl">💌</div>
+  <h1>Até o nosso date, Rayne!!</h1>
+  <p>Sua resposta foi confirmada e sua pontuação registrada! ✨</p>
+  <button class="btn sec" data-reset>⬅️ Recomeçar</button>
+</section>
+</div>
+
+</main>
+
+<footer id="foot" class="fixed bottom-0 inset-x-0 z-40 bg-rose-950/95 backdrop-blur border-t border-pink-300/20 px-5 pt-4" style="padding-bottom:calc(1.25rem + env(safe-area-inset-bottom,0px))">
+  <div class="max-w-md mx-auto">
+    <div class="flex justify-between text-xs font-bold text-pink-200 mb-1"><span>Termômetro do date</span><span id="score-n">0/13</span></div>
+    <div class="relative h-3 rounded-full bg-rose-900 mx-3">
+      <div id="bar" class="h-3 rounded-full bg-gradient-to-r from-pink-400 to-rose-300 transition-all duration-500" style="width:0%"></div>
+      <div id="star" class="absolute -top-2.5 text-2xl transition-all duration-500" style="left:0%;transform:translateX(-50%)">⭐️</div>
+    </div>
+    <p id="score-reason" class="text-xs text-pink-100 mt-3 min-h-[1rem]">Responda o convite para ganhar estrelas!</p>
+  </div>
+</footer>
+
+<script>
+const API='https://sheetdb.io/api/v1/akn2zy1h1dr0y';
+const SHEET='Ribeiro';
+// MODO TESTE: a página publicada não consegue chamar o SheetDB; com TESTE=true o fluxo segue mesmo sem envio.
+const TESTE=true;
+const $=id=>document.getElementById(id);
+const K1='Sem beijo: vamos deixar pra depois',K2='Vamos ver se rola beijos',K3='13 beijos';
+let S,score,M;
+const fresh=()=>({ata:null,date:'',time:'',rest:'Unami Sushi',sim:false,address:''});
+
+const calc=()=>{
+  let pts=(S.ata==='ok'?3:0)+(S.date?2:0)+(S.rest?2:0)+(S.sim?3:0);
+  if(M.kiss===K3)pts+=3;else if(M.kiss===K2)pts+=2;else if(M.kiss===K1)pts+=1;
+  return pts;
+};
+
+for(let i=0;i<14;i++){
+  const h=document.createElement('div');h.className='heart';h.textContent=i%3?'❤️':'💖';
+  h.style.left=Math.random()*100+'%';h.style.fontSize=(16+Math.random()*28)+'px';
+  h.style.animationDuration=(12+Math.random()*14)+'s';h.style.animationDelay=(-Math.random()*20)+'s';
+  $('hearts').appendChild(h);
+}
+
+function celebrate(){
+  const o=$('celebrate');o.classList.remove('hidden');
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  const cols=['#e30613','#ffffff','#b0000f','#ff4d5a'];
+  for(let i=0;i<90;i++){
+    const c=document.createElement('div');c.className='conf';
+    if(i%6===0){c.textContent='⭐️';}else{c.style.cssText+=`width:${6+Math.random()*8}px;height:${10+Math.random()*10}px;background:${cols[i%cols.length]};border-radius:2px`;}
+    o.appendChild(c);
+    const x=(Math.random()-.5)*window.innerWidth*1.1,up=-(window.innerHeight*(.35+Math.random()*.45)),r=Math.random()*900-450;
+    c.animate([{transform:'translate(0,0) rotate(0)',opacity:1},
+      {transform:`translate(${x*.6}px,${up}px) rotate(${r/2}deg)`,opacity:1,offset:.45},
+      {transform:`translate(${x}px,${window.innerHeight*.5}px) rotate(${r}deg)`,opacity:0}],
+      {duration:5500+Math.random()*3500,easing:'cubic-bezier(.2,.7,.4,1)',delay:Math.random()*700}).onfinish=()=>c.remove();
+  }
+}
+
+function toast(t){const e=$('toast');e.textContent=t;e.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('show'),2600);}
+
+function update(reason){
+  const n=calc(),d=n-score;score=n;
+  $('score-n').textContent=n+'/13';$('bar').style.width=n/13*100+'%';$('star').style.left=n/13*100+'%';
+  if(d>0){toast('⭐️ +'+d+' '+reason);$('score-reason').textContent='+'+d+' ponto'+(d>1?'s':'')+': '+reason;}
+  else if(d<0){$('score-reason').textContent='Pontuação ajustada: '+reason;}
+  if(n===13&&d>0)celebrate();
+}
+
+const VIEWS=['p1','no-s','refuse','addr','pic','p3','done'];
+let cur='p1';
+function go(id){cur=id;VIEWS.forEach(v=>$(v).classList.toggle('hidden',v!==id));window.scrollTo({top:0,behavior:'smooth'});}
+
+function resetM(){
+  M={kiss:''};
+  document.querySelectorAll('[name=kiss]').forEach(r=>r.checked=false);
+  $('err3').classList.add('hidden');
+}
+
+function resetAddr(){
+  S.address='';
+  $('address').value='';
+  $('err-addr').classList.add('hidden');
+}
+
+function back(to){
+  if(cur==='addr'){S.sim=false;resetAddr();}
+  if(cur==='pic'){resetM();}
+  if(cur==='p3'){M.kiss='';document.querySelectorAll('[name=kiss]').forEach(r=>r.checked=false);}
+  $('celebrate').classList.add('hidden');
+  go(to);update('voltou uma etapa');
+}
+
+function mark(sel,attr,val){document.querySelectorAll(sel).forEach(b=>b.classList.toggle('sel',b.dataset[attr]===val));}
+
+function resetAll(){
+  S=fresh();resetM();resetAddr();score=calc();$('celebrate').classList.add('hidden');
+  $('date').value='';$('time').value='';markCal();
+  document.querySelectorAll('#rayane .opt').forEach(b=>b.classList.remove('sel'));
+  lock(false);mark('[data-rest]','rest',S.rest);
+  {const n=calc();$('score-n').textContent=n+'/13';$('bar').style.width=n/13*100+'%';$('star').style.left=n/13*100+'%';}
+  $('score-reason').textContent='Responda o convite para ganhar estrelas!';
+  go('p1');
+}
+
+function lock(on){
+  ['blk-when','blk-where'].forEach(i=>{const e=$(i);e.classList.toggle('opacity-40',on);e.classList.toggle('pointer-events-none',on);e.toggleAttribute('inert',on);});
+  $('yes').disabled=on;
+}
+document.querySelectorAll('[data-ata]').forEach(b=>b.onclick=()=>{
+  S.ata=b.dataset.ata;mark('[data-ata]','ata',S.ata);
+  const res=S.ata==='res';
+  if(res){S.date='';S.time='';S.rest='';S.sim=false;$('date').value='';$('time').value='';markCal();mark('[data-rest]','rest','');$('err1').classList.add('hidden');}
+  lock(res);if(!res&&!S.rest){S.rest='Unami Sushi';mark('[data-rest]','rest',S.rest);}
+  update(res?'ressalvas anotadas: agora só o Não está disponível':'topou o ombro amigo 🤝');
+});
+
+// Calendário: Novembro 2026, só o dia 28 está disponível (1º/11/2026 é domingo)
+function markCal(){document.querySelectorAll('#cal [data-d]').forEach(b=>b.classList.toggle('sel',b.dataset.d===S.date));}
+for(let e=0;e<6;e++){$('cal').appendChild(document.createElement('div'));}
+for(let d=1;d<=30;d++){
+  const box=document.createElement('button');box.type='button';
+  const iso='2026-11-'+String(d).padStart(2,'0');
+  if(d!==28){
+    box.className='day off-date';box.disabled=true;box.textContent=d;
+  } else {
+    box.className='day';box.textContent=d;box.dataset.d=iso;
+    box.onclick=()=>{
+      const v=S.date===iso?'':iso;
+      S.date=v;$('date').value=v;markCal();
+      update(v?'data escolhida 📅':'data removida');
+    };
+  }
+  $('cal').appendChild(box);
+}
+$('time').onchange=e=>S.time=e.target.value;
+
+document.querySelectorAll('[data-rest]').forEach(b=>{
+  const pick=ev=>{
+    if(ev.target.closest('a')||b.classList.contains('off'))return;
+    S.rest=b.dataset.rest;mark('[data-rest]','rest',S.rest);update('restaurante escolhido 🍴');
+  };
+  b.onclick=pick;b.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();pick(e);}};
+});
+
+$('yes').onclick=()=>{
+  const miss=[];
+  if(S.ata!=='ok')miss.push('aceite a parte da ataxia');
+  if(!S.date)miss.push('escolha a data');
+  if(!S.time)miss.push('escolha o horário');
+  if(!S.rest)miss.push('confirme o restaurante');
+  const e=$('err1');
+  if(miss.length){e.textContent='Falta: '+miss.join(', ')+'.';e.classList.remove('hidden');return;}
+  e.classList.add('hidden');S.sim=true;go('addr');update('disse SIM! 💖');
+};
+$('no').onclick=()=>{S.sim=false;$('err1').classList.add('hidden');go('no-s');};
+
+$('address').oninput=e=>{
+  S.address=e.target.value.trim();
+  if(S.address)$('err-addr').classList.add('hidden');
+};
+
+$('to-kiss').onclick=()=>{
+  S.address=$('address').value.trim();
+  if(!S.address){$('err-addr').classList.remove('hidden');$('address').focus();return;}
+  $('err-addr').classList.add('hidden');
+  go('pic');
+};
+
+function summary(){
+  const [y,m,d]=S.date.split('-');
+  $('s-dt').textContent=`${d}/${m}/${y} às ${S.time}`;
+  $('s-rest').textContent=S.rest;
+  $('s-addr').textContent=S.address;
+  $('s-uber').textContent=`Uber por minha conta: busco às ${S.time} e deixo na volta (passando pela minha casa)`;
+  $('s-mot').textContent='Beijos: '+M.kiss;
+  const n=calc();
+  const sl = n===13
+    ? {icon:'🏖️🌊',title:'Partiu Praia de Elite',msg:'Pontuação máxima: 13 beijos garantidos e bora pra praia curtir o mar, sem pressa! ☀️🌊',tip:'',bg:'#9f1239'}
+    : (n===11 || n===12)
+      ? {icon:'🌊💦',title:'Modo Fazer Xixi no Mar',msg:'Você entrou no clima de fazer xixi no mar!',tip:'💡 Dica: fechar os 13 beijos destrava o modo vamos pra praia 😉',bg:'#a21caf'}
+      : {icon:'😇',title:'Comportada da Direita',msg:'Comportada demais hoje! ✨',tip:'',bg:'#b45309'};
+  $('aviso').classList.toggle('hidden',n!==13);
+  $('seal').style.background=sl.bg;
+  $('seal').innerHTML=`
+    <div class="text-4xl">${sl.icon}</div>
+    <div class="text-base font-bold mt-1">Selo ${sl.title}</div>
+    <div class="mt-1">${n}/13 ⭐️</div>
+    <div class="mt-1 font-normal">${sl.msg}</div>
+    ${sl.tip?`<div class="mt-3 pt-2.5 border-t border-white/25 text-xs font-semibold">${sl.tip}</div>`:''}
+  `;
+  go('p3');
+}
+
+async function send(resp){
+  const data={
+    data_envio:new Date().toLocaleString('pt-BR'),
+    resposta:resp,
+    ataxia:S.ata==='ok'?'Por mim tudo bem':(S.ata==='res'?'Tem ressalvas':''),
+    data_date:S.date,
+    horario:S.time,
+    restaurante:S.rest,
+    endereco:S.address,
+    beijos:M.kiss,
+    pontos:calc()
+  };
+  console.log('[ENVIO]',SHEET,data);
+  try{
+    const url=`${API}?sheet=${encodeURIComponent(SHEET)}`;
+    const r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({data})});
+    return r.ok;
+  }catch(e){return false;}
+}
+
+async function conclude(btn,resp,next){
+  const t=btn.textContent;btn.disabled=true;btn.textContent='Enviando...';
+  const ok=await send(resp);btn.disabled=false;btn.textContent=t;
+  if(ok||TESTE)go(next);else toast('Não consegui enviar. Tente de novo 🙏');
+}
+
+$('conclude-no').onclick=e=>conclude(e.currentTarget,'NÃO','refuse');
+$('conclude-yes').onclick=e=>conclude(e.currentTarget,'SIM','done');
+document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>b.hasAttribute('data-back')?back(b.dataset.go):go(b.dataset.go));
+document.querySelectorAll('[data-reset]').forEach(b=>b.onclick=resetAll);
+
+document.querySelectorAll('[name=kiss]').forEach(r=>r.onchange=()=>{
+  M.kiss=r.value;$('err3').classList.add('hidden');
+  update(M.kiss===K3?'13 beijos fechados! Vamos pra praia! 🏖️':M.kiss===K2?'vamos ver se rola beijos 😏':'beijos ficam para depois 🙊');
+});
+
+$('to-sum').onclick=()=>{
+  if(!M.kiss){$('err3').classList.remove('hidden');return;}
+  summary();
+};
+
+resetAll();
+</script>
+</body>
+</html>
